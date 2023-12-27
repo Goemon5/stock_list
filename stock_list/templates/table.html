@@ -1,0 +1,85 @@
+{% extends "base.html" %} {% block content%}
+
+<body>
+  <h1 class="my-5">タイトル</h1>
+
+  <section>
+    <div class="container my-3 py-3 bg-light">
+      <div class="row">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-warning w-100" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+            要素追加
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">商品名</th>
+              <th scope="col">在庫の数</th>
+              <th scope="col">更新時間</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+
+
+
+          <tbody>
+            {% for stock in stocks %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>{{ stock.stock_name }}</td>
+              <td>{{ stock.quantity }}</td>
+              <td>
+                <a href="{{ url_for('main.add_quantity',stock_id=stock.id)}}" class="btn btn-secondary">
+                  入庫
+                </a>
+                <a href="{{ url_for('main.issue_stock',stock_id=stock.id)}}" class="btn btn-secondary">
+                  出庫
+                </a>
+                {% if current_user.is_administrator() %}<a href="{{ url_for('main.update_stock',stock_id=stock.id)}}"
+                  class="btn btn-primary">変更</a>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-warning">
+            <h5 class="modal-title" id="exampleModalLabel">在庫の種類の追加</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form method="POST">
+            {{form.hidden_tag()}}
+            <div class="modal-body">
+              {{form.stock_name.label(class="form-control-label")}}
+              {{form.stock_name(class="form-control")}}
+              {{form.quantity.label(class="form-control-label")}}
+              {{form.quantity(class="form-control")}}
+
+
+            </div>
+            <div class="modal-footer">
+              {{form.submit(class="btn btn-warning")}}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+{% endblock %}
