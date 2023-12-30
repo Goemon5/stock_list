@@ -5,7 +5,7 @@
     <div class="container my-3 py-3 bg-light">
         <div class="row">
             <div class="col-md-6 m-auto text-center">
-                <h1>ユーザー管理</h1>
+                <h1>User Management</h1>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <a href="{{ url_for('users.register') }}" class="btn btn-primary w-100">
-                        ユーザー登録
+                        create an account
                     </a>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header">
-                            <h4>最新のユーザー</h4>
+                            <h4>UserList</h4>
                         </div>
                         <table class="table table-striped">
                             <thead class="table-dark">
@@ -55,7 +55,7 @@
                                         {% if current_user.is_administrator() or current_user.id == user.id%}
                                         <a href="{{ url_for('users.account',user_id=user.id) }}"
                                             class="btn btn-secondary">
-                                            変更
+
                                         </a>
                                         {% endif %}
                                     </td>
