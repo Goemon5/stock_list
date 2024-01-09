@@ -60,6 +60,7 @@ def delete_category(table_category_id):
 @login_required
 def table(table_category_id):
     stocks = Stock.query.filter_by(category_id=table_category_id).all()
+    category =TableCategory.query.get_or_404(table_category_id)
     form = AddFactorForm(category_id=table_category_id)
     if form.validate_on_submit():
         stock =Stock(stock_name=form.stock_name.data,quantity=form.quantity.data,category_id=table_category_id)
@@ -71,7 +72,7 @@ def table(table_category_id):
         form.stock_name.data=""
         flash(form.errors['stock_name'][0]) 
     
-    return render_template("table.html",stocks=stocks,form=form)
+    return render_template("table.html",stocks=stocks,form=form,category=category)
 
 @main.route("/<int:stock_id>/update_stock>",methods =["GET","POST"])
 @login_required

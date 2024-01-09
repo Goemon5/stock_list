@@ -6,21 +6,21 @@
       <div class="col-lg-4 mx-auto">
         <div class="card bg-primary text-center">
           <div class="card-body text-light">
-            <h3>ユーザー登録</h3>
-            <p>ユーザー情報を入力してください。</p>
+            <h3>Sign up</h3>
+            <p> Enter your new user account information.</p>
             <form method="POST">
               {{form.hidden_tag()}}
               <div class="mb-3">
-                {{ render_field(form.username,placeholder ="ユーザー名",
+                {{ render_field(form.username,placeholder ="UserName",
                 class="form-control form-control-lg")}}
 
                 <div class="mb-3">
-                  {{ render_field(form.password,placeholder ="パスワード",
+                  {{ render_field(form.password,placeholder ="Password",
                   class="form-control form-control-lg")}}
                 </div>
                 <div class="mb-3">
                   {{ render_field(form.pass_confirm,placeholder
-                  ="パスワード(確認)", class="form-control form-control-lg")}}
+                  ="password(confirm)", class="form-control form-control-lg")}}
                 </div>
                 {{form.submit(class="btn btn-out-line-light w-100")}}
               </div>

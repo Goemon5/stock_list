@@ -5,19 +5,19 @@ from wtforms.validators import DataRequired,NumberRange
 from stock_list.models import TableCategory,Stock
 
 class TableCategoryForm(FlaskForm):
-    category = StringField("カテゴリ名",validators=[DataRequired()])
-    text = StringField("説明文")
-    submit =SubmitField("保存")
+    category = StringField("CategoryName",validators=[DataRequired()])
+    text = StringField("instruction")
+    submit =SubmitField("submit")
     
     def validate_category(self,field):
         if TableCategory.query.filter_by(category=field.data).first():
-            raise ValidationError("入力されたカテゴリ名は既に使われています")
+            raise ValidationError("This Category Name are already taken")
         
 
 class UpdateCategoryForm(FlaskForm):
-    category = StringField("カテゴリ名",validators=[DataRequired()])
-    text = StringField("説明文")
-    submit =SubmitField("更新")
+    category = StringField("CategoryName",validators=[DataRequired()])
+    text = StringField("instruction")
+    submit =SubmitField("Update")
     
     def __init__(self, table_category_id,*args,**kwargs):
         super(UpdateCategoryForm,self).__init__(*args,**kwargs)
@@ -25,26 +25,25 @@ class UpdateCategoryForm(FlaskForm):
         
     def validate_category(self,field):
          if TableCategory.query.filter_by(category=field.data).first():
-            raise ValidationError("入力されたカテゴリ名は既に使われています")
+            raise ValidationError("This Category Name are already taken")
         
         
 class AddFactorForm(FlaskForm):
-    stock_name =StringField("商品名",validators=[DataRequired()])
-    quantity= IntegerField("数値",validators=[DataRequired(),NumberRange(min=1)])
-    category_id =IntegerField("カテゴリーID",validators=[DataRequired()])
-    submit =SubmitField("追加")
+    stock_name =StringField("Stock Name",validators=[DataRequired()])
+    quantity= IntegerField("Quantity",validators=[DataRequired(),NumberRange(min=1)])
+    category_id =IntegerField("CategoryID",validators=[DataRequired()])
+    submit =SubmitField("Add")
     
     
     def validate_stock_name(self,field):
          if Stock.query.filter_by(stock_name=field.data).first():
-            raise ValidationError("入力された商品名は既に使われています")
+            raise ValidationError("This Stock Name are already taken")
         
         
 class UpdateStockForm(FlaskForm):
-    stock_name =StringField("商品名",validators=[DataRequired()])
-    quantity= IntegerField("数値",validators=[DataRequired(),NumberRange(min=1)])
-    #category_id =IntegerField("カテゴリーID",validators=[DataRequired()])
-    submit =SubmitField("更新")
+    stock_name =StringField("Stock Name",validators=[DataRequired()])
+    quantity= IntegerField("quantity",validators=[DataRequired(),NumberRange(min=1)])
+    submit =SubmitField("Update")
     
     def __init__(self, stock_id,*args,**kwargs):
         super(UpdateStockForm,self).__init__(*args,**kwargs)
@@ -52,12 +51,12 @@ class UpdateStockForm(FlaskForm):
         
     def validate_stock_name(self,field):
          if Stock.query.filter_by(stock_name=field.data).first():
-            raise ValidationError("入力された商品名は既に使われています")
+            raise ValidationError("This Stock Name are already taken")
         
 class AddQuantityForm(FlaskForm):
-    quantity= IntegerField("数値",validators=[DataRequired(),NumberRange(min=1)])
-    submit =SubmitField("追加")
+    quantity= IntegerField("Quantity",validators=[DataRequired(),NumberRange(min=1)])
+    submit =SubmitField("Add")
     
 class IssueQuantityForm(FlaskForm):
-    quantity= IntegerField("数値",validators=[DataRequired(),NumberRange(min=1)])
-    submit =SubmitField("出庫")
+    quantity= IntegerField("Quantity",validators=[DataRequired(),NumberRange(min=1)])
+    submit =SubmitField("Issue")

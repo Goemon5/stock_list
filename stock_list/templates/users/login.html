@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-3">
                 <a href="{{ url_for('users.register') }}" class="btn btn-primary w-100">
-                    ユーザー登録
+                    Sign up
                 </a>
             </div>
         </div>
@@ -18,21 +18,21 @@
             <div class="col-lg-4 mx-auto">
                 <div class="card bg-primary text-center">
                     <div class="card-body text-light">
-                        <h3>ログイン</h3>
+                        <h3>Login</h3>
                         <form method="POST">
                             {{form.hidden_tag()}}
                             <div class="mb-3">
-                                {{ render_field(form.username,placeholder ="ユーザー名",
+                                {{ render_field(form.username,placeholder ="UserName",
                                 class="form-control form-control-lg")}}
                             </div>
 
                             <div class="mb-3">
-                                {{ render_field(form.password,placeholder ="パスワード",
+                                {{ render_field(form.password,placeholder ="Password",
                                 class="form-control form-control-lg")}}
                             </div>
                             <div>
 
-                                {{form.submit(class="btn btn-out-line-light w-100",value="ログイン")}}
+                                {{form.submit(class="btn btn-out-line-light w-100",value="Login")}}
                             </div>
 
 

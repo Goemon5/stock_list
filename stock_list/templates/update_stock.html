@@ -5,7 +5,7 @@ current_user.is_administrator() %}
         <div class="row">
             <div class="col-md-3">
                 <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#del_modal">
-                    削除
+                    Delete
                 </button>
             </div>
         </div>
@@ -19,19 +19,19 @@ current_user.is_administrator() %}
             <div class="col-lg-4 mx-auto">
                 <div class="card bg-success text-center">
                     <div class="card-body text-light">
-                        <h3>在庫情報更新</h3>
-                        <p>ストック名を変更してください。</p>
+                        <h3>Update Stock</h3>
+                        <p>Please change stock name.</p>
                         <form method="POST">
                             {{ form.hidden_tag() }}
                             <div class="mb-3">
                                 {{render_field(form.stock_name, class="form-control
-                                form-control-lg" ,placeholder="在庫名")}}
+                                form-control-lg" ,placeholder="StockName")}}
                             </div>
 
                             <hr />
                             <div class="mb-3">
                                 {{render_field(form.quantity, class="form-control
-                                form-control-lg" ,placeholder="量")}}
+                                form-control-lg" ,placeholder="quantity")}}
                             </div>
 
                             {{ form.submit(class="btn btn-outline-light w-100")}}
@@ -52,11 +52,11 @@ current_user.is_administrator() %}
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>このカテゴリを削除しますか？</p>
+                <p>May I remove this stock name？</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    キャンセル
+                    Cancel
                 </button>
                 <form action="{{url_for('main.delete_stock',stock_id=stock_id)}}" method="POST">
                     <input type="submit" class="btn btn-danger" value="削除" />

@@ -12,18 +12,18 @@ class LoginForm(FlaskForm):
 
 class RegistrationForm(FlaskForm):
     username = StringField("ユーザーネーム",validators=[DataRequired()])
-    password = PasswordField("パスワード", validators=[DataRequired(), EqualTo("pass_confirm", message="パスワードが一致していません")])
+    password = PasswordField("パスワード", validators=[DataRequired(), EqualTo("pass_confirm", message="Passwords do not match")])
     pass_confirm = PasswordField("パスワード（確認）",validators=[DataRequired()])
-    submit = SubmitField("登録")
+    submit = SubmitField("Sign up")
     
     def validate_username(self,field):
         if User.query.filter_by(username =field.data).first():
-            raise ValidationError("入力されたユーザー名は既に使われています")
+            raise ValidationError("This UserName are already take")
         
     
 class UpdateUserForm(FlaskForm):
     username = StringField("ユーザーネーム",validators=[DataRequired()])
-    password = PasswordField("パスワード",validators=[DataRequired(),EqualTo("pass_confirm","パスワードが一致していません")])
+    password = PasswordField("パスワード",validators=[DataRequired(),EqualTo("pass_confirm","Passwords do not match")])
     pass_confirm = PasswordField("パスワード（確認）")
     submit = SubmitField("更新")
     
@@ -33,4 +33,4 @@ class UpdateUserForm(FlaskForm):
         
     def validate_username(self,field):
         if User.query.filter(User.id !=self.id).filter_by(username =field.data).first():
-            raise ValidationError("入力されたユーザー名は既に使われています")
+            raise ValidationError("This UserName are already take")

@@ -40,8 +40,8 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th>ID</th>
-                                    <th>ユーザー名</th>
-                                    <th>変更</th>
+                                    <th>UserName</th>
+                                    <th>edit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,7 +55,7 @@
                                         {% if current_user.is_administrator() or current_user.id == user.id%}
                                         <a href="{{ url_for('users.account',user_id=user.id) }}"
                                             class="btn btn-secondary">
-
+                                            Edit
                                         </a>
                                         {% endif %}
                                     </td>

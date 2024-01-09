@@ -5,7 +5,7 @@ current_user.is_administrator() %}
         <div class="row">
             <div class="col-md-3">
                 <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#del_modal">
-                    削除
+                    Delete
                 </button>
             </div>
         </div>
@@ -19,8 +19,8 @@ current_user.is_administrator() %}
             <div class="col-lg-4 mx-auto">
                 <div class="card bg-success text-center">
                     <div class="card-body text-light">
-                        <h3>カテゴリ更新</h3>
-                        <p>カテゴリを変更してください。</p>
+                        <h3>Category Update</h3>
+                        <p>Please change the category</p>
                         <form method="POST">
                             {{ form.hidden_tag() }}
                             <div class="mb-3">

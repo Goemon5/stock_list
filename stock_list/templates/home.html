@@ -3,7 +3,7 @@
 
 
 <div class="main my-5">
-    <h1 class="display-6">在庫のカテゴリを選んでください</h1>
+    <h1 class="display-6">Please choose category</h1>
 </div>
 
 <div class="">
@@ -13,7 +13,7 @@
                 <div class="col-md-3">
                     <button type="button" class="btn btn-warning w-100" data-bs-toggle="modal"
                         data-bs-target="#addCategoryModal">
-                        カテゴリ追加
+                        Add category
                     </button>
                 </div>
             </div>
@@ -34,10 +34,12 @@
                     <p class="card-text">{{table_category.text}}</p>
                     {% if current_user.is_administrator() %}<a
                         href="{{ url_for('main.table_category',table_category_id=table_category.id)}}"
-                        class="btn btn-primary">変更</a>
+                        class="btn btn-primary">Edit</a>
                     {% endif %}
-                    <a href="{{ url_for('main.table',table_category_id=table_category.id) }}" class="btn btn-secondary">
-                        詳細を見る
+                    <a href="{{ url_for('main.table', table_category_id=table_category.id) }}"
+                        class="btn btn-secondary">
+
+                        details
                     </a>
                 </div>
                 {% endfor %}
@@ -53,7 +55,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-warning">
-                        <h5 class="modal-title" id="exampleModalLabel">カテゴリ追加</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form method="POST">

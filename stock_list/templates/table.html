@@ -1,14 +1,14 @@
 {% extends "base.html" %} {% block content%}
 
 <body>
-  <h1 class="my-5">タイトル</h1>
+  <h1 class="my-5">{{category.category}}</h1>
 
   <section>
     <div class="container my-3 py-3 bg-light">
       <div class="row">
         <div class="col-md-3">
           <button type="button" class="btn btn-warning w-100" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
-            要素追加
+            Increase the types of stock
           </button>
         </div>
       </div>
@@ -19,10 +19,10 @@
           <thead>
             <tr>
               <th scope="col">No</th>
-              <th scope="col">商品名</th>
-              <th scope="col">在庫の数</th>
-              <th scope="col">更新時間</th>
-              <th scope="col"></th>
+              <th scope="col">StockName</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Manage</th>
+
             </tr>
           </thead>
 
@@ -36,13 +36,13 @@
               <td>{{ stock.quantity }}</td>
               <td>
                 <a href="{{ url_for('main.add_quantity',stock_id=stock.id)}}" class="btn btn-secondary">
-                  入庫
+                  Add
                 </a>
                 <a href="{{ url_for('main.issue_stock',stock_id=stock.id)}}" class="btn btn-secondary">
-                  出庫
+                  Issue
                 </a>
                 {% if current_user.is_administrator() %}<a href="{{ url_for('main.update_stock',stock_id=stock.id)}}"
-                  class="btn btn-primary">変更</a>
+                  class="btn btn-primary">Edit</a>
                 {% endif %}
               </td>
             </tr>
@@ -59,7 +59,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header bg-warning">
-            <h5 class="modal-title" id="exampleModalLabel">在庫の種類の追加</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Increase the types of stock</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form method="POST">
