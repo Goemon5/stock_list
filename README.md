@@ -35,6 +35,6 @@
 | --- | ----------- |
 | フロントエンド    | HTML,CSS(Bootstrap) |
 | バックエンド    | Python(Flask) |
-|環境構築| Anaclnda|
+|環境構築| Anaconda|
 |データベース| SQLAlchemy |
 
