@@ -23,7 +23,7 @@
 |![ユーザー登録ページ](https://github.com/Goemon5/stock_list/assets/119960019/c4f43a92-7ddc-4a98-8e21-336ab261de19)|![ログインページ](https://github.com/Goemon5/stock_list/assets/119960019/1be04c8b-c75c-4ae2-81ff-2c51db60f5ab)|
 |ユーザーネームとパスワードを設定します。パスワードは確認欄を設けています。|ログインIDとパスワードでの認証機能を実装しました。|
 
-|ユーザー登録ページ|ログインページ|
+|ユーザー管理ページ|在庫表ページ|
 |---|---|
 |![ユーザー管理ページ](https://github.com/Goemon5/stock_list/assets/119960019/07324d90-6e60-4b68-8b68-18db5514a25d)|![在庫表ページ](https://github.com/Goemon5/stock_list/assets/119960019/a22bc8bb-2f3d-462d-82a2-895dc8401281)|
 |認証されているユーザーのみ編集ができます|商品名の追加と出庫、入庫の操作ができます|
